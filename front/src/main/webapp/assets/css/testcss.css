@@ -1,0 +1,84 @@
+.bg-dark {
+    background-color: #343a40;
+}
+
+body {
+    padding-top: 20px;
+    
+}
+
+.btn-default {
+    top: 25%;
+    left:25%; 
+    color: #999; 
+    background: #fffccc; 
+} 
+
+.navbar 
+{
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: space-between;
+padding: .5rem 1rem;
+padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;	
+}
+
+/*   .navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+} 
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    font: 400 13.3333px Arial;
+} */
+
+a:hover
+{
+	color: white;
+}
