@@ -1,0 +1,14 @@
+com\dao\impl\daoimpl.class
+com\model\UserDetails.class
+com\model\Category.class
+com\config\dbconfig.class
+com\dao\userdao.class
+com\test\test.class
+com\dao\impl\supplierdaoimpl.class
+com\model\product.class
+com\dao\catdao.class
+com\model\supplier.class
+com\dao\supplierdao.class
+com\dao\productdao.class
+com\dao\impl\productdaoimpl.class
+com\dao\impl\userdaoimpl.class
