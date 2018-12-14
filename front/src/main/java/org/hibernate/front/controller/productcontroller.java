@@ -1,5 +1,8 @@
 package org.hibernate.front.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dao.catdao;
 import com.dao.productdao;
@@ -42,9 +47,36 @@ public class productcontroller {
 	}
 
 	@RequestMapping(value="/InsertProduct",method=RequestMethod.POST)
-	public String insertProduct(@ModelAttribute("prod")product prod,Model m)
+	public String insertProduct(@ModelAttribute("prod")product prod,@RequestParam("pimage")MultipartFile prodImage,Model m)
 	{
 		production.add(prod);
+String path="C:\\Users\\HP\\eclipse-workspace\\front\\src\\main\\webapp\\assets\\images\\";
+		
+		path=path+String.valueOf(prod.getProductid())+".jpg";
+		
+		File imageFile=new File(path);
+		
+		if(!prodImage.isEmpty())
+		{
+			try
+			{
+				byte[] buffer=prodImage.getBytes();
+				FileOutputStream fos=new FileOutputStream(imageFile);
+				BufferedOutputStream bs=new BufferedOutputStream(fos);
+				bs.write(buffer);
+				bs.close();
+			}
+			catch(Exception e)
+			{
+				System.out.println(e);
+				m.addAttribute("Error","Exception Occured during the Image Uploading"+e);	
+			}
+		}
+		else
+		{
+			System.out.println("error occured");
+			m.addAttribute("Error","Error Occured during the Image Uploading");
+		}
 		product prod1=new product();
 		m.addAttribute("prod", prod1);
 		

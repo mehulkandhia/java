@@ -24,7 +24,7 @@
 </div>
 <div class="panel-body">
 
-<form:form class="form-horizontal" action="InsertProduct" modelAttribute="prod"  method="post">
+<form:form class="form-horizontal" action="InsertProduct" modelAttribute="prod" enctype="multipart/form-data" method="post">
 <div class="form-group">
 <label class="control-label col-md-4" for="productname">Enter Product Name</label>
 <div class="col-md-8">
@@ -74,6 +74,13 @@
 <form:option value="0" label="---Select List---"/>
 <form:options items="${ListCategory }"/>
 </form:select>
+</div>
+</div>
+
+<div class="form-group">
+<label class="control-label col-md-4" for="pimage">Supplier Id</label>
+<div class="col-md-8">
+<form:input type="file" path="pimage" placeholder="Image" class="form-control"/>
 </div>
 </div>
 

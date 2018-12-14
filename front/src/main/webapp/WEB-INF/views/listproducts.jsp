@@ -43,11 +43,13 @@
 </thead>
 <c:forEach items="${productList}" var="product">
 <tr>
-<td><img src="${images}/vivo-v11.jpg"  style="width:100px;"></td>
+<td><img src="${images}/${product.productid}.jpg"  style="width:100px;"></td>
 <td>${product.productname}</td>
 <td>${product.brandname}</td>
 <td>${product.price}</td>
-<td>${product.stock}</td>
+<td><c:if test="${product.stock > 0}">${product.stock}</c:if>
+<c:if test="${product.stock <= 0}"><font color="green">Out Of Stock!!!</font></c:if>
+</td>
 <td>
 <a href="/front/show/${product.productid}/product"><span class="glyphicon glyphicon-eye-open"></span></a>
 <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart</button>
@@ -55,17 +57,7 @@
 </tr>
 </c:forEach>
 </table>
-          </div>
-<!-- <table id="prodlist" class="table table-striped table-bordered">
-<thead>
-<tr>
-<th>Product Name</th>
-<th>Brand</th>
-<th>Price</th>
-<th>Stock</th>
-</tr>
-</thead>
-</table> -->
+</div>
 </div>
 </div>
 </div>
