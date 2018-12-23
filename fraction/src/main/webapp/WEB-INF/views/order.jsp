@@ -15,44 +15,57 @@
 </head>
 <body>
 <%@include file="./shared/navbar.jsp" %>
-<div class="container">
-<div class="row">
-<div class="col-xs-12 col-sm-8">
-<h3 align="center">Cart</h3>
 <table class="table table-striped table-bordered">
 <tr>
 <td>Product Name</td>
 <td>Price</td>
 <td>Quantity</td>
 <td>Total Price</td>
-<td>Operation</td>
 </tr>
 <c:forEach items="${cartitems}" var="cart">
-<form action="<c:url value="/UpdateCart/${cart.cartid}/update"/>" method="post">
-<tr>
 
+<tr>
 <td>${cart.productname}</td>
 <td>${cart.price}</td>
 <td><input type="text" name="quantity" value="${cart.quantity}" required/></td>
 <td>${cart.quantity * cart.price}</td>
-<td><input type="submit" value="update" class="btn btn-success"/>
-
-<a href="<c:url value="/DeleteCart/${cart.cartid}/delete"/>"><span class="glyphicon glyphicon-trash"></span></a></td>
 </tr>
-</form>
+
 </c:forEach>
 <tr bgcolor="cyan">
 	<td colspan="4"><b>Grand Total</b></td>
 	<td colspan="2"><b>Rs.${grandTotal}/-</b></td>
 </tr>
-<tr>
-	<td colspan="3"><a href="<c:url value="/listproducts/products"/>" class="btn btn-warning">Continue Shopping</a></td>
-	<td colspan="2"><a href="<c:url value="/checkout"/>" class="btn btn-success">Checkout</a></td>
+</table>
+<c:forEach items="${productList}" var="product">
+<form action="<c:url value="/payment/${product.productid}/addition"/>" method="post">
+<table class="table table-striped table-bordered">
+
+<tr bgcolor="cyan">
+<td>Payment detail</td>
+</tr>
+<tr bgcolor="orange">
+<td>Payment Type</td>
+<td><input type="radio" name="pmode" value="COD"/>Cash on Delivery
+<input type="radio" name="pmode" value="CC"/>Credit Card
+</td>
+</tr>
+<tr bgcolor="orange">
+<td>Credit Card</td>
+<td>
+<input type="text" name="creditcard">
+</td>
+</tr>
+<tr bgcolor="orange">
+<td>CVV<input type="text" name="cvv"/></td>
+<td>Valid Upto<input type="text" name="valid"/></td>
+</tr>
+<tr bgcolor="cyan">
+<td><input type="submit" value="pay"></td>
 </tr>
 </table>
-</div>
-</div>
-</div>
+</form>
+</c:forEach>
  <!-- Footer -->
  	<%@include file="./shared/footer.jsp" %> 
 </body>

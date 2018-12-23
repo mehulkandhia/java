@@ -6,7 +6,7 @@
           <h1 class="my-4">Shop Name</h1>
           <div class="list-group">
           <c:forEach items="${cat}" var="Category">
-            <a href="/front/category1/${Category.categoryid}/products" class="list-group-item">${Category.categoryname}</a>
+            <a href="/fraction/category1/${Category.categoryid}/products" class="list-group-item">${Category.categoryname}</a>
             </c:forEach>
           </div>
 

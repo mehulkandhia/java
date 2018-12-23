@@ -1,38 +1,12 @@
-.bg-dark {
-    background-color: #343a40;
-}
 
 body {
-    padding-top: 20px;
-    
+  background: url('http://i.imgur.com/Au8To6H.jpg') fixed;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
 }
 
-.btn-default {
-    top: 25%;
-    left:25%; 
-    color: #999; 
-    background: #fffccc; 
-} 
-
-.login-block{
- background: cyan;
-float:left;
-width:100%;
-border:2px solid black;
-padding : 50px 0;
-}
-
-  .login-sec{padding: 50px 30px; position:relative; border:2px solid black;}
-.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
-.login-sec .copy-text i{color:#FEB58A;}
-.login-sec .copy-text a{color:#E36262;}
-.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto;}
-.btn-login{background: #DE6262; color:#fff; font-weight:600;} 
- .carousel-inner{border-radius:0 10px 10px 0;}
-.carousel-caption{text-align:left; left:5%;}
-
-/* .wrap {
+.wrap {
   width: 100%;
   height: 100%;
   min-height: 100%;
@@ -188,73 +162,4 @@ form.login a:hover {
   
   padding: 10px;
   left: 45%;
-} */
-
-.navbar 
-{
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-justify-content: space-between;
-padding: .5rem 1rem;
-padding-top: 0.5rem;
-    padding-right: 1rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;	
-}
-
-/*   .navbar-brand {
-    display: inline-block;
-    padding-top: .3125rem;
-    padding-bottom: .3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    line-height: inherit;
-    white-space: nowrap;
-} 
-
-.navbar-toggler:not(:disabled):not(.disabled) {
-    cursor: pointer;
-}
-
-
-.navbar-toggler {
-    padding: .25rem .75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-}
-
-button, select {
-    text-transform: none;
-}
-
-button, input {
-    overflow: visible;
-}
-button, input, optgroup, select, textarea {
-    margin: 0;
-    font-family: inherit;
-
-}
-
-*, ::after, ::before {
-    box-sizing: border-box;
-}
-
-input, textarea, select, button {
-    text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    font: 400 13.3333px Arial;
-} */
-
-a:hover
-{
-	color: white;
 }

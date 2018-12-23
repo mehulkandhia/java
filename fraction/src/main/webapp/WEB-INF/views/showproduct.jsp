@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-xs-12">
 <ol class="breadcrumb">
-<li><a href="fraction/home">Home</a></li>
+<li><a href="fraction/home4">Home</a></li>
 <li><a href="fraction/listproducts/products">Products</a></li>
 <li class="active">${prod.productname}</li>
 </ol>
@@ -35,3 +35,5 @@
 </div>
 </div>
 </div>
+ <!-- Footer -->
+ 	<%@include file="./shared/footer.jsp" %> 

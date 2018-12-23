@@ -1,5 +1,5 @@
 
-<%@include file="header.jsp" %>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -26,7 +26,7 @@
 
 <form:form class="form-horizontal" action="InsertProduct" modelAttribute="prod" enctype="multipart/form-data" method="post">
 <div class="form-group">
-<label class="control-label col-md-4" for="productname">Enter Product Name</label>
+<label class="control-label col-md-4" for="productname">Product Name</label>
 <div class="col-md-8">
 <form:input path="productname" placeholder="Product Name" class="form-control"/>
 </div>
@@ -96,10 +96,9 @@
 </div>
 </div>
 </div>
-<div class="col-md-offset-4 text-center">
+<div class="col-md-offset-3 text-center">
 <table border="1">
 <tr>
-<td>Product Id</td>
 <td>Product Name</td>
 <td>Category</td>
 <td>Price</td>
@@ -107,18 +106,20 @@
 <td>Operation</td>
 </tr>
 <c:forEach items="${productList}" var="product">
+<form action="<c:url value="/editProduct/${product.productid}"/>" method="post">
 <tr>
-<td>${product.productid}</td>
+
 <td>${product.productname}</td>
 <td>${product.categoryid}</td>
-<td>${product.price}</td>
-<td>${product.supplierid}</td>
+<td><input type="text" name="price" value="${product.price}" required/></td>
+<td><input type="text" name="stock" value="${product.stock}" required/></td>
 <td>
-<a class="btn btn-success" href="<c:url value="/editProduct/${product.productid}"/>">Edit</a>
+<input type="submit" value="update" class="btn btn-success"/>
 
 <a class="btn btn-danger" href="<c:url value="/deleteProduct/${product.productid}"/>">delete</a>
 </td>
 </tr>
+</form>
 </c:forEach>
 </table>
 </div>

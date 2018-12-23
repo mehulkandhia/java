@@ -20,7 +20,7 @@ public class HomeController {
 	@Autowired
 	productdao production;
 	
-	@RequestMapping(value= {"", "/home1", "/index"})
+	@RequestMapping(value= {"", "/home4", "/index"})
 	public ModelAndView index()
 	{
 		ModelAndView mv=new ModelAndView("test");

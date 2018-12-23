@@ -9,7 +9,7 @@
         <!-- Copyright-->
         <div class="container-fluid">
             <p class="text-center m-0 py-1">
-                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Bootstrap 4</a>
+                © 2017 Copyright <a href="https://getbootstrap.com/" class="text-white">Online Shopping</a>
             </p>
         </div>
         <!-- Copyright -->

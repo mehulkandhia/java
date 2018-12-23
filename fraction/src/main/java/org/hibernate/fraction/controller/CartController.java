@@ -20,7 +20,7 @@ import com.model.product;
 public class CartController {
 
 	@Autowired
-	cartdao productcart;
+	cartdao productcart1;
 	
 	@Autowired
 	productdao production;
@@ -29,19 +29,19 @@ public class CartController {
 	public String showCart(Model m,HttpSession session)
 	{
 		String username=(String)session.getAttribute("username");
-		List<Cart> listcartitems=productcart.listCartItems(username);
-		m.addAttribute("cartitems", listcartitems);
-		m.addAttribute("grandTotal", this.calcGrandTotalPrice(listcartitems));
+		List<Cart> listcart=productcart1.listCartItems(username);
+		m.addAttribute("cartitems", listcart);
+		m.addAttribute("grandTotal", this.calcGrandTotalPrice(listcart));
 		return "Cart1";
 	}
-	public int calcGrandTotalPrice(List<Cart> listcartitems)
+	public int calcGrandTotalPrice(List<Cart> listcart)
 	{
 		
 		int count=0;
 		int grandTotal=0;
-		while(count<listcartitems.size())
+		while(count<listcart.size())
 		{
-			Cart cart=listcartitems.get(count);
+			Cart cart=listcart.get(count);
 			grandTotal=grandTotal+(cart.getQuantity()*cart.getPrice());
 			count++;
 		}
@@ -60,19 +60,19 @@ public class CartController {
 		cart1.setProductname(prod.getProductname());
 		cart1.setQuantity(quantity);
 		cart1.setStatus("N");
-		cart1.setUsername("vivo");
-		System.out.println("ProductId :"+prod.getProductid()+"Quantity of product :"+prod.getStock()+"Quantity in cart :"+cart1.getQuantity());
+		cart1.setUsername(username);
+		/*System.out.println("ProductId :"+prod.getProductid()+"Quantity of product :"+prod.getStock()+"Quantity in cart :"+cart1.getQuantity());
 
 		int i=prod.getStock()-cart1.getQuantity();
 		
 		System.out.println("Product Quantity Updated :"+i);
 		
 		prod.setStock(i);
-		production.update(prod);
-		m.addAttribute("cartItems",productcart.add(cart1));	
+		production.update(prod);*/
+		m.addAttribute("cartItems",productcart1.add(cart1));	
 		m.addAttribute("cartItem",cart1);
 		
-		List<Cart> listCartItems=productcart.listCartItems(username);
+		List<Cart> listCartItems=productcart1.listCartItems(username);
 		m.addAttribute("cartitems",listCartItems);
 		m.addAttribute("grandTotal",this.calcGrandTotalPrice(listCartItems));
 		m.addAttribute("userClickAddCart", true);
@@ -83,15 +83,15 @@ public class CartController {
 	public String UpdateCart(@PathVariable("cartid")int cartid,@RequestParam("quantity")int quantity,Model m, String username,HttpSession session)
 	{
 		username=(String)session.getAttribute("username");
-		Cart cart1=productcart.getCartItem(cartid);
+		Cart cart1=productcart1.getCartItem(cartid);
 		cart1.setQuantity(quantity);
-		productcart.update(cart1);
-		List<Cart> listcartitems=productcart.listCartItems(username);
-		m.addAttribute("cartit", productcart.listCartItems(username));
+		productcart1.update(cart1);
+		List<Cart> listcartitems=productcart1.listCartItems(username);
+		m.addAttribute("cartit", productcart1.listCartItems(username));
 		m.addAttribute("grandTotal", this.calcGrandTotalPrice(listcartitems));
 		m.addAttribute("cart1", cart1);
 		
-		List<Cart> cartitemlist=productcart.listCartItems(username);
+		List<Cart> cartitemlist=productcart1.listCartItems(username);
 		m.addAttribute("cartitems", cartitemlist);
 		m.addAttribute("grandTotal", this.calcGrandTotalPrice(cartitemlist));
 		return "Cart1";
@@ -101,7 +101,7 @@ public class CartController {
 	public String DeleteCart(@PathVariable("cartid")int cartid,Model m, String username,HttpSession session)
 	{
 		 username=(String)session.getAttribute("username");
-		Cart cart1=productcart.getCartItem(cartid);
+		Cart cart1=productcart1.getCartItem(cartid);
 		/*cart1.getProductid();
 		//product prod;
 		product prod=production.getproduct(productid);
@@ -113,7 +113,7 @@ public class CartController {
 		
 		prod.setStock(i);
 		production.update(prod);*/
-		productcart.delete(cart1);
+		productcart1.delete(cart1);
 		//product prod=production.getproduct(productid);
 		/*System.out.println("ProductId :"+prod.getProductid()+"Quantity of product :"+prod.getStock()+"Quantity in cart :"+cart1.getQuantity());
 
@@ -123,12 +123,12 @@ public class CartController {
 		
 		prod.setStock(i);
 		production.update(prod);*/
-		/*List<Cart> listcartitems=productcart.listCartItems(username);
-		m.addAttribute("cartit", productcart.listCartItems(username));
+		/*List<Cart> listcartitems=productcart1.listCartItems(username);
+		m.addAttribute("cartit", productcart1.listCartItems(username));
 		m.addAttribute("grandTotal", this.calcGrandTotalPrice(listcartitems));
 		m.addAttribute("cart1", cart1);*/
 		
-		List<Cart> cartitemlist=productcart.listCartItems(username);
+		List<Cart> cartitemlist=productcart1.listCartItems(username);
 		m.addAttribute("cartitems", cartitemlist);
 		m.addAttribute("grandTotal", this.calcGrandTotalPrice(cartitemlist));
 		return "Cart1";
@@ -138,10 +138,11 @@ public class CartController {
 	public String checkout(Model m,HttpSession session)
 	{
 		String username=(String)session.getAttribute("username");
-		List<Cart> cartitemlist=productcart.listCartItems(username);
+		
+		List<Cart> cartitemlist=productcart1.listCartItems(username);
 		m.addAttribute("cartitems", cartitemlist);
 		m.addAttribute("grandTotal", this.calcGrandTotalPrice(cartitemlist));
-		session.setAttribute("username",cartitemlist.size());
-		return "OrderConfirm";
+		
+		return "order";
 	}
 }

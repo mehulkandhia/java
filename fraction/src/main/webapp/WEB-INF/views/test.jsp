@@ -25,9 +25,9 @@
 
     <!-- Navigation -->
      <%@include file="./shared/navbar.jsp" %>
-     <div class="col-lg-2">
-    <%@include file="./shared/sidebar.jsp" %>
-    </div>
+      <div class="col-lg-2">
+    <%-- <%@include file="./shared/sidebar.jsp" %> --%>
+    </div> 
     <!-- Loading Home Page -->
     <c:if test="${userClickHome == true }">
     <!-- Loading Page Content-->
@@ -53,7 +53,8 @@
 	</c:if> --%>
 	
 	<!-- Loading Product List -->
-	<c:if test="${userClickAllProducts == true or userClickAllCategoryProducts == true}">
+	<%-- or userClickAllCategoryProducts == true --%>
+	<c:if test="${userClickAllProducts == true}">
     <!-- Loading Page Content -->
 	<%@include file="listproducts.jsp" %>
 	</c:if>

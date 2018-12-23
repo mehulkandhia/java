@@ -88,9 +88,12 @@ String path="C:\\Users\\HP\\eclipse-workspace\\front\\src\\main\\webapp\\assets\
 	}
 
 	@RequestMapping(value="/editProduct/{productid}")
-	public String editProduct(@PathVariable("productid")int productid,Model m)
+	public String editProduct(@PathVariable("productid")int productid,@RequestParam("price")int price,@RequestParam("stock")int stock,Model m)
 	{
 		product prod=production.getproduct(productid);
+		prod.setPrice(price);
+		prod.setStock(stock);
+		production.update(prod);
 		m.addAttribute("prod",prod);
 		
 		List<product> productList=production.ListProducts();
@@ -98,10 +101,10 @@ String path="C:\\Users\\HP\\eclipse-workspace\\front\\src\\main\\webapp\\assets\
 		
 		List<Category> ListCategory=categories.ListCategories();
 		m.addAttribute("ListCategory",this.getCategoryList(ListCategory));
-		return "updating";
+		return "product";
 	}
 
-	@RequestMapping(value="/UpsetProduct",method=RequestMethod.POST)
+	/*@RequestMapping(value="/UpsetProduct",method=RequestMethod.POST)
 	public String updateProduct(@ModelAttribute("prod")product prod,Model m)
 	{
 		System.out.println("Three");
@@ -122,7 +125,7 @@ String path="C:\\Users\\HP\\eclipse-workspace\\front\\src\\main\\webapp\\assets\
 		List<Category> ListCategory=categories.ListCategories();
 		m.addAttribute("ListCategory",this.getCategoryList(ListCategory));
 		return "product";
-	}
+	}*/
 	
 	@RequestMapping(value="/deleteProduct/{productid}")
 	public String deleteProduct(@PathVariable("productid")int productid,Model m)

@@ -15,44 +15,53 @@
 </head>
 <body>
 <%@include file="./shared/navbar.jsp" %>
-<div class="container">
-<div class="row">
-<div class="col-xs-12 col-sm-8">
-<h3 align="center">Cart</h3>
+<h3 align="center">Receipt</h3>
+<c:forEach items="${cartitems}" var="cart">
+<form action="<c:url value="/confirm/${cart.productid}/addition"/>" method="post">
 <table class="table table-striped table-bordered">
+<tr>
+<td>Order Id</td>
+<td>${paymentDetail.orderid}</td>
+<td>Order Date</td>
+<td>${paymentDetail.orderDate}</td>
+</tr>
+<tr>
+<td>Customer</td>
+<td>${user.username}</td>
+<td>Shipping Amount</td>
+<td>${paymentDetail.pmode}</td>
+</tr>
+<tr>
+<td>Address</td>
+<td colspan="3">${user.address }</td>
+</tr>
+
 <tr>
 <td>Product Name</td>
 <td>Price</td>
 <td>Quantity</td>
 <td>Total Price</td>
-<td>Operation</td>
 </tr>
-<c:forEach items="${cartitems}" var="cart">
-<form action="<c:url value="/UpdateCart/${cart.cartid}/update"/>" method="post">
-<tr>
 
+
+<tr>
 <td>${cart.productname}</td>
 <td>${cart.price}</td>
 <td><input type="text" name="quantity" value="${cart.quantity}" required/></td>
 <td>${cart.quantity * cart.price}</td>
-<td><input type="submit" value="update" class="btn btn-success"/>
-
-<a href="<c:url value="/DeleteCart/${cart.cartid}/delete"/>"><span class="glyphicon glyphicon-trash"></span></a></td>
 </tr>
-</form>
-</c:forEach>
+
 <tr bgcolor="cyan">
 	<td colspan="4"><b>Grand Total</b></td>
-	<td colspan="2"><b>Rs.${grandTotal}/-</b></td>
+	<td colspan="2"><b>Rs.${paymentDetail.totalShippingAmount}/-</b></td>
 </tr>
 <tr>
-	<td colspan="3"><a href="<c:url value="/listproducts/products"/>" class="btn btn-warning">Continue Shopping</a></td>
-	<td colspan="2"><a href="<c:url value="/checkout"/>" class="btn btn-success">Checkout</a></td>
+<td colspan="2"><input type="submit" value="Confirm"></td>
 </tr>
 </table>
-</div>
-</div>
-</div>
+
+</form>
+</c:forEach>
  <!-- Footer -->
  	<%@include file="./shared/footer.jsp" %> 
 </body>

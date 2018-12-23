@@ -14,17 +14,17 @@
 
 <c:if test="${userClickAllProducts == true}">
 <ol class="breadcrumb">
-<li><a href="fraction/home">Home</a></li>
+<li><a href="fraction/home4">Home</a></li>
 <li class="active">All Products</li>
 </ol>
 </c:if>
 
-<c:if test="${userClickAllCategoryProducts == true}">
+<%-- <c:if test="${userClickAllCategoryProducts == true}">
 <ol class="breadcrumb">
-<li><a href="fraction/home">Home</a></li>
+<li><a href="fraction/home4">Home</a></li>
 <li class="active">Category</li>
 </ol>
-</c:if>
+</c:if> --%>
 </div>
 </div>
 <div class="row">
@@ -63,3 +63,5 @@
 </div>
 </div>
 </div>
+ <!-- Footer -->
+ 	<%@include file="./shared/footer.jsp" %> 
